@@ -1,6 +1,5 @@
 import React, { useState} from 'react'
 
-//only need props as a param if we are passing in props to this component (we are going to here).
 const Add = (props) => {
 
   let createPet = { 
