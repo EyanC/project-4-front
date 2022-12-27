@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Add from './components/Add';
+import './App.css'
 
 const App = () => {
 
@@ -38,7 +39,7 @@ const App = () => {
       <div className="dog">
         {dog.map((pet) => {
           return (
-            <div className="pet" key={pet.id}>
+            <div className="pet container-fluid" key={pet.id}>
               <h4>Name: {pet.image_url}</h4>
               <h5>Age: {pet.breed}</h5>
               <h5>Age: {pet.age}</h5>
