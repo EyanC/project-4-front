@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Add from './components/Add';
+import Edit from './components/Edit';
 
 const App = () => {
 
@@ -24,6 +25,23 @@ const App = () => {
         getDog()
       })
   }
+
+  const handleDelete = (event) => {
+    axios.delete('http://localhost:8000/api/dog/' + event.target.value)
+    .then((res) => {
+      console.log(res.data)
+      getDog()
+    })
+  }
+
+  const handleUpdate = (editPet) => {
+    axios.put('http://localhost:8000/api/dog/' + editPet.id, editPet)
+    .then((res) => {
+      console.log(editPet)
+      getDog()
+    })
+  }
+
   
 
   useEffect(() => {
@@ -40,8 +58,13 @@ const App = () => {
           return (
             <div className="pet" key={pet.id}>
               <h4>Name: {pet.image_url}</h4>
-              <h5>Age: {pet.breed}</h5>
+              <h5>Name: {pet.name}</h5>
+              <h5>Breed: {pet.breed}</h5>
               <h5>Age: {pet.age}</h5>
+              <Edit handleUpdate={handleUpdate} id={pet.id} pet={pet} />
+              <button onClick={handleDelete} value={pet.id}>
+                X
+              </button>
             </div>
           )
         })}
