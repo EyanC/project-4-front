@@ -28,11 +28,15 @@ const App = () => {
 
   const handleDelete = (event) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9e74a78 (working)
     axios.delete('http://localhost:8000/api/dog/' + event.target.value)
     .then((res) => {
       console.log(res.data)
       getDog()
     })
+<<<<<<< HEAD
   }
 
   const handleUpdate = (editPet) => {
@@ -49,18 +53,23 @@ const App = () => {
       .then((response) => {
         getDog()
       })
+=======
+>>>>>>> 9e74a78 (working)
   }
-  
-  const handleUpdate = (editDog) => {
-    console.log(editDog)
-    axios
-      .put('http://localhost:8000/api/dog/' + editDog.id, editDog)
-      .then((response) => {
-        getDog()
-      })
+
+  const handleUpdate = (editPet) => {
+    axios.put('http://localhost:8000/api/dog/' + editPet.id, editPet)
+    .then((res) => {
+      console.log(editPet)
+      getDog()
+    })
   }
+<<<<<<< HEAD
   
 >>>>>>> e5d9511 (Working Code and Routes)
+=======
+
+>>>>>>> 9e74a78 (working)
   
 
   useEffect(() => {
@@ -94,6 +103,10 @@ const App = () => {
               <h4>Name: {pet.name}</h4>
               <h5>Breed: {pet.breed}</h5>
               <h5>Age: {pet.age}</h5>
+              <Edit handleUpdate={handleUpdate} id={pet.id} pet={pet} />
+              <button onClick={handleDelete} value={pet.id}>
+                X
+              </button>
               <h5>Gender: {pet.gender}</h5>
               <h5>Color: {pet.color}</h5>
               <h5>Size: {pet.size}</h5>

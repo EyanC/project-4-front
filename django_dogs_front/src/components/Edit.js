@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Edit = (props) => {
   const [pet, setPet] = useState({...props.pet})
 
@@ -45,6 +46,8 @@ const Edit = (props) => {
 export default Edit
 =======
 
+=======
+>>>>>>> 9e74a78 (working)
 const Edit = (props) => {
     const [pet, setPet] = useState({ ...props.pet })
 
@@ -145,6 +148,7 @@ const Edit = (props) => {
 }  
 
 export default Edit
+<<<<<<< HEAD
 
 // import React, { useState } from 'react'
 // const Edit = (props) => {
@@ -185,3 +189,5 @@ export default Edit
 // }
 // export default Edit
 >>>>>>> e5d9511 (Working Code and Routes)
+=======
+>>>>>>> 9e74a78 (working)
