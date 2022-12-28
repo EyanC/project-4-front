@@ -98,7 +98,7 @@ const Edit = (props) => {
             </details>
         </div>
     )
-}
+}  
 
 export default Edit
 
