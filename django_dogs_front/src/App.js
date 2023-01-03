@@ -54,7 +54,11 @@ const App = () => {
   return (
     <>
   
-    <header>Show Dogs</header>
+    <nav>Show Dogs</nav>
+        <header class="header">
+          <div class="header-text">Sign in via:</div>
+          <a href="https://pages.akcpetinsurance.com/bethere?campaignid=18869295032&adgroupid=143117505093&gclid=Cj0KCQiAnsqdBhCGARIsAAyjYjRnH88W1n-A9YdS_OemYDV4wCP5tEoY2yaSCGXkW_6Xg6NqD9ru0wgaAhp2EALw_wcB">AKC</a>
+        </header>
     <div className=' m-2 bg-light d-flex text-center container-fluid w-25 '>
     <Add handleCreate={handleCreate} />
     </div>
