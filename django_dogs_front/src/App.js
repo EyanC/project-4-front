@@ -53,15 +53,18 @@ const App = () => {
 
   return (
     <>
+  
     <header>Show Dogs</header>
-    <div className=' m-3 bg-light d-flex text-center container-fluid'>
+    <div className=' m-2 bg-light d-flex text-center container-fluid w-25 '>
     <Add handleCreate={handleCreate} />
     </div>
-      <div className="dog container-fluid w+100">
+      <div className=" dog container-fluid w-100 row ">
         {dog.map((pet) => {
           return (
-            <div className="pet bg-light card text-center m-300" key={pet.id}>
+            <div className=" pet bg-light card text-center m-2 p-5" key={pet.id}>
+              <div className = 'card m-1 '>
               <img src= {pet.image_url}/>
+              </div>
               <h4>Name: {pet.name}</h4>
               <h5>Breed: {pet.breed}</h5>
               <h5>Age: {pet.age}</h5>
@@ -69,10 +72,12 @@ const App = () => {
               <h5>Color: {pet.color}</h5>
               <h5>Size: {pet.size}</h5>
               <h5>Description: {pet.description}</h5>
-              <button><Edit handleUpdate={handleUpdate} id={pet.id} pet={pet} /></button>
-              <button onClick={handleDelete} value={pet.id}>
+              <div className='text-center'>
+              <button className='btn btn-success w-100' ><Edit handleUpdate={handleUpdate} id={pet.id} pet={pet} /></button>
+              <button className='btn btn-danger w-25' onClick={handleDelete} value={pet.id}>
               Delete
              </button>
+             </div>
             </div>
           )
         })}
