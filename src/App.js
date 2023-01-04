@@ -42,28 +42,12 @@ const App = () => {
       })
   }
 
-
-
-  const handleDelete = (deleteDog) => {
-    confirmAlert({
-      title: 'Confirm Deletion',
-      message: `Are you sure you want to delete this post?`,
-      buttons: [{
-        label: 'Yes',
-        onClick: () => {
-          axios
-          .delete('https://morning-harbor-71338.herokuapp.com/api/dog/' + deleteDog.id)
-            .then((response) => {
-              setDog(dog.filter(dog => dog.id !== deleteDog.id))
-            })
-        }
-      },
-      {
-        label: 'No',
-        onClick: () => { }
-      }
-      ]
-    })
+  const handleDelete = (event) => {
+    axios
+      .delete('https://morning-harbor-71338.herokuapp.com/api/dog/' + event.target.value)
+      .then((response) => {
+        getDog()
+      })
   }
   
   const handleUpdate = (editDog) => {
