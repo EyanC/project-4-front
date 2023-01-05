@@ -5,10 +5,6 @@
 import { useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
-
-
-
-
 import Edit from './Edit'
 import '../App.css'
 
@@ -19,11 +15,6 @@ import '../App.css'
 
 const Pet = (props) => {
    
- 
-
-    
-
-
 
     //Function for Dropdown Menu on Post
     const dropdownFunction = () => {
