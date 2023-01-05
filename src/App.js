@@ -14,8 +14,6 @@ const App = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [currentUser, setCurrentUser] = useState({})
 
-
-
   const getDog = () => {
     setIsFetchingDog(true);
     axios
