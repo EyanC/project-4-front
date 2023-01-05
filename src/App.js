@@ -1,49 +1,108 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import Add from './components/Add';
-import Edit from './components/Edit';
+import { confirmAlert } from 'react-confirm-alert';
+import Dog from './components/Dog';
+import Navbar from './components/Navbar';
+import { ColorRing } from 'react-loader-spinner';
+
 
 const App = () => {
 
   let [dog, setDog] = useState([])
+  const [isFetchingDog, setIsFetchingDog] = useState(false);
+  const [filteredDog, setFilteredDog] = useState([])
+  const [isSearching, setIsSearching] = useState(false);
+  const [currentUser, setCurrentUser] = useState({})
+
+
 
   const getDog = () => {
+    setIsFetchingDog(true);
     axios
-      .get('http://localhost:8000/api/dog')
+    .get('https://morning-harbor-71338.herokuapp.com/api/dog')
       .then(
-        (response) => setDog(response.data),
-        (err) => console.error(err)
+        (response) => {
+          setDog(response.data)
+          setIsFetchingDog(false);
+        },
+        (error) => console.error(error)
       )
-      .catch((error) => console.error(error))
-  }
+      .catch((error) => {
+        console.error(error)
+        setIsFetchingDog(false);
+      })
+  };
 
   const handleCreate = (addPet) => {
     axios
-      .post('http://localhost:8000/api/dog', addPet)
+      .post('https://morning-harbor-71338.herokuapp.com/api/dog', addPet)
       .then((response) => {
         console.log(response)
         getDog()
       })
   }
 
-  const handleDelete = (event) => {
-    axios
-      .delete('http://localhost:8000/api/dog/' + event.target.value)
-      .then((response) => {
-        getDog()
-      })
+
+
+  const handleDelete = (deleteDog) => {
+    confirmAlert({
+      title: 'Confirm Deletion',
+      message: `Are you sure you want to delete this post?`,
+      buttons: [{
+        label: 'Yes',
+        onClick: () => {
+          axios
+          .delete('https://morning-harbor-71338.herokuapp.com/api/dog/' + deleteDog.id)
+            .then((response) => {
+              setDog(dog.filter(dog => dog.id !== deleteDog.id))
+            })
+        }
+      },
+      {
+        label: 'No',
+        onClick: () => { }
+      }
+      ]
+    })
   }
   
   const handleUpdate = (editDog) => {
     console.log(editDog)
     axios
-      .put('http://localhost:8000/api/dog/' + editDog.id, editDog)
+      .put('https://morning-harbor-71338.herokuapp.com/api/dog/' + editDog.id, editDog)
       .then((response) => {
         getDog()
       })
   }
   
-  
+  const onSearchChange = (searchInput) => {
+    const searchInputLower = searchInput.toLowerCase()
+    if (searchInput.length > 0) {
+      setIsSearching(true)
+      const result = dog.filter((pet) => {
+        return pet.name.toLowerCase().match(searchInputLower) || 
+        pet.breed.toLowerCase().match(searchInputLower) || 
+        pet.size.toLowerCase().match(searchInputLower) || 
+        pet.gender.toLowerCase().match(searchInputLower) || 
+        pet.description.toLowerCase().match(searchInputLower) || 
+        pet.color.toLowerCase().match(searchInputLower)
+      })
+      setFilteredDog(result);
+    } else {
+      setIsSearching(false)
+    }
+  }
+
+  const NoSearchResults = () => {
+    return (
+      <><p className="noResults">No Pets to Display</p></>
+    )
+  }
+
+  const dogToDisplay = isSearching ? filteredDog : dog
+
+
+
 
   useEffect(() => {
     getDog()
@@ -54,38 +113,42 @@ const App = () => {
   return (
     <>
   
-    <nav>Show Dogs</nav>
-        <header class="header">
-          <div class="header-text">Sign in via:</div>
-          <a href="https://pages.akcpetinsurance.com/bethere?campaignid=18869295032&adgroupid=143117505093&gclid=Cj0KCQiAnsqdBhCGARIsAAyjYjRnH88W1n-A9YdS_OemYDV4wCP5tEoY2yaSCGXkW_6Xg6NqD9ru0wgaAhp2EALw_wcB">AKC</a>
-        </header>
+  <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} currentUser={currentUser} setCurrentUser={setCurrentUser}  />
     <div className=' m-2 bg-light d-flex text-center container-fluid w-25 '>
-    <Add handleCreate={handleCreate} />
+    {/* <Add handleCreate={handleCreate} /> */}
     </div>
-      <div className=" dog container-fluid w-100 row ">
-        {dog.map((pet) => {
-          return (
-            <div className=" pet bg-light card text-center m-2 p-5" key={pet.id}>
-              <div className = 'card m-1 '>
-              <img src= {pet.image_url}/>
-              </div>
-              <h4>Name: {pet.name}</h4>
-              <h5>Breed: {pet.breed}</h5>
-              <h5>Age: {pet.age}</h5>
-              <h5>Gender: {pet.gender}</h5>
-              <h5>Color: {pet.color}</h5>
-              <h5>Size: {pet.size}</h5>
-              <h5>Description: {pet.description}</h5>
-              <div className='text-center'>
-              <button className='btn btn-success w-100' ><Edit handleUpdate={handleUpdate} id={pet.id} pet={pet} /></button>
-              <button className='btn btn-danger w-25' onClick={handleDelete} value={pet.id}>
-              Delete
-             </button>
-             </div>
-            </div>
-          )
-        })}
+      
+
+
+
+
+      <div className='posts-container'>
+        {
+          isFetchingDog ? <div className='spinner'>
+            <>
+              <ColorRing
+                visible={true}
+                height='200'
+                width='200'
+                ariaLabel='blocks-loading'
+                wrapperStyle={{}}
+                wrapperClass='blocks-wrapper'
+                colors={['#c444b9', '#9e2419', '#c444b9', '#9e2419', '#c444b9']} />
+            </>
+          </div> :
+            dogToDisplay.length > 0 ?
+              dogToDisplay.map((pet) => {
+                return (
+                  <Dog pet={pet} handleUpdate={handleUpdate} handleDelete={handleDelete} key={pet.id} />
+                )
+              })
+              : <NoSearchResults />
+        }
       </div>
+
+      
+
+
     </>
   )
 }
