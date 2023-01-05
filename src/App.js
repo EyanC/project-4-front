@@ -101,33 +101,29 @@ const App = () => {
     <div className=' m-2 bg-light d-flex text-center container-fluid w-25 '>
     {/* <Add handleCreate={handleCreate} /> */}
     </div>
-      
-
-
-
-
-      <div className='posts-container'>
-        {
-          isFetchingDog ? <div className='spinner'>
-            <>
-              <ColorRing
-                visible={true}
-                height='200'
-                width='200'
-                ariaLabel='blocks-loading'
-                wrapperStyle={{}}
-                wrapperClass='blocks-wrapper'
-                colors={['#c444b9', '#9e2419', '#c444b9', '#9e2419', '#c444b9']} />
-            </>
-          </div> :
-            dogToDisplay.length > 0 ?
-              dogToDisplay.map((pet) => {
-                return (
-                  <Dog pet={pet} handleUpdate={handleUpdate} handleDelete={handleDelete} key={pet.id} />
-                )
-              })
-              : <NoSearchResults />
-        }
+      <div className=" dog container-fluid w-100 row ">
+        {dog.map((pet) => {
+          return (
+            <div className="  pet bg-light card text-center m-2 p-5" key={pet.id}>
+              <div className = 'card m-1 '>
+              <img src= {pet.image_url}/>
+              </div>
+              <h4>Name: {pet.name}</h4>
+              <h5>Breed: {pet.breed}</h5>
+              <h5>Age: {pet.age}</h5>
+              <h5>Gender: {pet.gender}</h5>
+              <h5>Color: {pet.color}</h5>
+              <h5>Size: {pet.size}</h5>
+              <h5>Description: {pet.description}</h5>
+              <div className='text-center'>
+              <button className='btn btn-success w-100' ><Edit handleUpdate={handleUpdate} id={pet.id} pet={pet} /></button>
+              <button className='btn btn-danger w-25' onClick={handleDelete} value={pet.id}>
+              Delete
+             </button>
+             </div>
+            </div>
+          )
+        })}
       </div>
 
       
