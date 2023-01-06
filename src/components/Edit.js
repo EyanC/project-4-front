@@ -43,8 +43,8 @@ const Edit = (props) => {
 
 
     return (
-        <div>
-            <div className='dropdown-div'>
+        <div >
+            <div className='dropdown-div '>
                 <svg
                 onClick={dropdownFunction}
                 className='clickable-svg'
@@ -81,11 +81,11 @@ const Edit = (props) => {
 
 
                 {editAlert ?
-                    <div className='edit-overlay'>
-                        <div className='edit-form-container'>
-                            <div className='add-form-header'>
-                                <h3>Edit Drink Post</h3>
-                                <button onClick={closeEditAlert} className='close-add-button'>
+                    <div className='edit-overlay '>
+                        <div className='edit-form-container mb-3 container-fluid'>
+                            <div className='add-form-header '>
+                                <h3>Edit Pet</h3>
+                                <button onClick={closeEditAlert} className=' close-add-button p-2'>
                                     <svg
                                         width="24"
                                         height="24"
@@ -94,22 +94,21 @@ const Edit = (props) => {
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                     </svg>
-                                </button>
+                                X </button>
                             </div>
-                            <form className='add-form' onSubmit={handleSubmit}>
+                            <form className='add-form mb-1 d-flex row ' onSubmit={handleSubmit}>
                                 <label htmlFor="name">Name: </label>
-                                <input
+                                <input className='form-control'
                                     type="text"
                                     name="name"
                                     value={pet.name}
                                     onChange={handleChange}
-
-
                                 />
                                 <br />
                                 <br />
                                 <label htmlFor="breed">Breed: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="breed"
                                     onChange={handleChange}
@@ -119,6 +118,7 @@ const Edit = (props) => {
                                 <br />
                                 <label htmlFor="gender">gender: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="gender"
                                     onChange={handleChange}
@@ -128,6 +128,7 @@ const Edit = (props) => {
                                 <br />
                                 <label htmlFor="color">Color: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="color"
                                     onChange={handleChange}
@@ -137,6 +138,7 @@ const Edit = (props) => {
                                 <br />
                                 <label htmlFor="size">Size: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="size"
                                     onChange={handleChange}
@@ -146,6 +148,7 @@ const Edit = (props) => {
                                 <br />
                                 <label htmlFor="age">Age: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="age"
                                     onChange={handleChange}
@@ -155,6 +158,7 @@ const Edit = (props) => {
                                 <br />
                                 <label htmlFor="description">Description: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="description"
                                     onChange={handleChange}
@@ -165,13 +169,14 @@ const Edit = (props) => {
                                 <br />
                                 <label htmlFor="image_url">image: </label>
                                 <input
+                                className='form-control'
                                     type="text"
                                     name="image_url"
                                     onChange={handleChange}
                                     value={pet.image_url}
                                 />
                                 <br />
-                                <input type="submit" />
+                                <input type="submit" className='btn btn-primary'/>
                             </form>
                         </div>
                     </div>

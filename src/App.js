@@ -4,7 +4,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import Dog from './components/Dog';
 import Navbar from './components/Navbar';
 import { ColorRing } from 'react-loader-spinner';
-import Login from './Login'
+import Footer from './components/Footer'
+
 
 const App = () => {
   let [dog, setDog] = useState([])
@@ -12,6 +13,9 @@ const App = () => {
   const [filteredDog, setFilteredDog] = useState([])
   const [isSearching, setIsSearching] = useState(false);
   const [currentUser, setCurrentUser] = useState({})
+  const [show, setShow] = useState(false)
+  const [showHomeP, setShowHomeP] = useState(true)
+
   const getDog = () => {
     setIsFetchingDog(true);
     axios
@@ -91,12 +95,17 @@ const App = () => {
   useEffect(() => {
     getDog()
   }, [])
+
+  
   return (
     <>
   <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} currentUser={currentUser} setCurrentUser={setCurrentUser}  />
     <div className=' m-2 bg-light d-flex text-center container-fluid w-25 '>
     {/* <Add handleCreate={handleCreate} /> */}
     </div>
+    {<div>
+
+    </div>}
       <div className='posts-container'>
         {
           isFetchingDog ? <div className='spinner'>
@@ -110,15 +119,17 @@ const App = () => {
                 wrapperClass='blocks-wrapper'
                 colors={['#EFF5F5', '#D6E4E5', '#497174', '#EB6440', '#874C62']} />
             </>
-          </div> :
+         </div> :
             dogToDisplay.length > 0 ?
               dogToDisplay.map((pet) => {
-                return (
+               { return (
                   <Dog pet={pet} handleUpdate={handleUpdate} handleDelete={handleDelete} key={pet.id} />
                 )
-              })
+              }})
               : <NoSearchResults />
         }
+              <Footer />
+
       </div>
     </>
   )

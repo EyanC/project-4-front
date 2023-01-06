@@ -108,9 +108,9 @@ const Login = (props) => {
                 </div>
                     <form onSubmit={handleLogin} className='add-form'>
                         <label htmlFor="em">Email: </label>
-                        <input type='text' placeholder='Email' name='em' className='add-input' onChange={(event)=> {setEmail(event.target.value)}}/>
+                        <input type='text' placeholder='Email' name='em' className='add-input form-control' onChange={(event)=> {setEmail(event.target.value)}}/>
                         <label htmlFor="pass">Password: </label>
-                        <input type='password' name='pass' placeholder='Password' className='add-input' onChange={(event)=> {setPassword(event.target.value)}}/>
+                        <input type='password' name='pass' placeholder='Password' className='add-input form-control' onChange={(event)=> {setPassword(event.target.value)}}/>
                         {toggleError ?
                         <h5 className='errorMsg'>{errorMessage}</h5>
                         :
@@ -122,9 +122,9 @@ const Login = (props) => {
                     <h3>New User? Register Here:</h3>
                         <form onSubmit={handleCreateUser} className='add-form'>
                         <label htmlFor="new-em">Email: </label>
-                        <input name='new-em' type='text' placeholder='Email' className='add-input' onChange={(event)=> {setEmail(event.target.value)}}/>
+                        <input name='new-em' type='text' placeholder='Email' className='add-input form-control' onChange={(event)=> {setEmail(event.target.value)}}/>
                         <label htmlFor="new-pass">Password: </label>
-                        <input name='new-pass' type='password' placeholder='Password' className='add-input' onChange={(event)=> {setPassword(event.target.value)}}/>
+                        <input name='new-pass' type='password' placeholder='Password' className='add-input form-control' onChange={(event)=> {setPassword(event.target.value)}}/>
                         {toggleError ?
                             <h5 className='errorMsg'>{errorMessage}</h5>
                             :
