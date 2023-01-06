@@ -1,4 +1,17 @@
 /****************/
+/*     Body     */
+/****************/
+:root {
+  background-color: #ffffe0;
+  }
+  
+.posts-container {
+  background-color: lightyellow;
+  padding-top: 10px;
+}
+
+
+/****************/
 /* Font Imports */
 /****************/
 
@@ -6,10 +19,10 @@
 /*     Navbar    */
 /*****************/
 .navbar{
-  background-color: rgb(255, 255, 255);
+  background-color: darkolivegreen;
   top: 0;
   width: 100%;
-  height: 50px;
+  height: 88px;
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -32,9 +45,11 @@ h2{
 }
 .icons a{
   margin: 0 .75em;
+
 }
 .icon-color path{
   color: rgb(0, 0, 0);
+
 }
 
 .login {
@@ -42,9 +57,10 @@ h2{
   text-align: center;
   margin: 0 1.5em 0 0;
   font-size: .9em;
+  font-weight: bold;
   text-transform: uppercase;
-  background-color: rgb(199, 89, 205);
-  color: white;
+  background-color: rgb(89, 161, 205);
+  color: rgb(243, 235, 235);
   padding: .5em .75em;
   border-style: none;
   border-radius: 5px;
@@ -52,7 +68,7 @@ h2{
 }
 
 .login:hover {
-  background-color: rgb(189, 81, 195);
+  background-color: #9dcbce;
 }
 
 .login-parent {
@@ -67,7 +83,7 @@ h2{
   margin: 0 1.5em 0 0;
   font-size: .8em;
   text-transform: uppercase;
-  background-color: rgb(199, 89, 205);
+  background-color: rgb(89, 161, 205);
   color: white;
   height: 30px;
   padding: .5em .75em;
@@ -77,7 +93,7 @@ h2{
 }
 
 .logout:hover {
-  background-color: rgb(189, 81, 195);
+  background-color: #D6E4E5;
 }
 
 .login-p {
@@ -93,6 +109,9 @@ h2{
 .dropdown-div{
   position: relative;
   display: inline-block;
+  background-color: whitesmoke;
+  border-radius: 25%; 
+  /* hamburger dots */
 }
 
 .dropdown-content {
@@ -153,9 +172,11 @@ h2{
 }
 
 .react-confirm-alert-body {
-  background-color: rgb(255, 255, 255) !important;
-  color: rgb(0, 0, 0) !important;
+  background-color: #D6E4E5 !important;
+  color: rgb(110, 150, 170) !important;
+  text-shadow: 1px 2px rgb(232, 28, 38) !important;
   text-align: center !important;
+  font-size: 20px;
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25) !important;
 }
 
@@ -166,15 +187,16 @@ h2{
 }
 
 .react-confirm-alert-button-group > * {
-  background-color: rgb(199, 89, 205) !important;
+  background-color: rgb(251, 8, 16) !important;
+  font-weight: bold;
   text-transform: uppercase !important;
   font-size: .8em !important;
   margin: 0 .65em !important;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.15) !important;
 }
 
 .react-confirm-alert-button-group > *:hover {
-  background-color: rgb(189, 81, 195) !important;
+  background-color: rgb(87, 212, 239) !important;
 }
 
 /*******/
@@ -280,6 +302,7 @@ body {
 
 .posts-container{
   margin-top: 80px;
+  color:white
 }
 
 .post-container {
@@ -350,7 +373,10 @@ body {
 }
 
 .post-name {
-  margin: .6em 0 .5em 0;
+  /* margin: .6em 0 .5em 0; */
+  color: rgb(171, 201, 119);
+  font-size: 55px;
+  font-family: monospace;
 }
 
 .ingredients-title {
@@ -548,6 +574,7 @@ footer > h5 {
 .searchBarContainer > input {
   width: 175px;
   margin-right: 1em;
+  margin-left: 1em;
 }
 
 /* Spinner */

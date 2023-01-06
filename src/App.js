@@ -106,7 +106,7 @@ const App = () => {
                 ariaLabel='blocks-loading'
                 wrapperStyle={{}}
                 wrapperClass='blocks-wrapper'
-                colors={['#C444B9', '#9E2419', '#C444B9', '#9E2419', '#C444B9']} />
+                colors={['#EFF5F5', '#D6E4E5', '#497174', '#EB6440', '#874C62']} />
             </>
           </div> :
             dogToDisplay.length > 0 ?
