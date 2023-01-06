@@ -4,6 +4,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import Dog from './components/Dog';
 import Navbar from './components/Navbar';
 import { ColorRing } from 'react-loader-spinner';
+import Login from './Login'
+
 const App = () => {
   let [dog, setDog] = useState([])
   const [isFetchingDog, setIsFetchingDog] = useState(false);
