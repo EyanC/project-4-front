@@ -3,6 +3,7 @@ import Add from './Add';
 import '../App.css';
 import SearchBar from './SearchBar';
 import Login from './Login'
+import './Dog Show (2).mp4';
 
 const Navbar = (props) => {
   const [showLogin, setShowLogin] = useState(false)
@@ -17,7 +18,11 @@ const Navbar = (props) => {
 
   return (
     <div className='navbar'>
-        
+        <div>
+        <video width="300" height="300" controls >
+        <source src="./Dog Show (2).mp4" type="video/mp4"/> 
+        </video>
+        </div>  
         <SearchBar onSearchChange={props.onSearchChange} />
         <div className='icons'>
         {props.currentUser.email ?
